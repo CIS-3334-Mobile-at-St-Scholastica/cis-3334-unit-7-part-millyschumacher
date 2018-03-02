@@ -1,5 +1,6 @@
 package css.cis3334.heartratetracker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     HeartRateList heartRateList;
     ArrayAdapter<HeartRate> hrAdapter;
 
+    public static final String HEARTRATE_KEY="HEARTRATE_KEY";
+
     //ArrayList<HeartRate> basicheartRateList;
 
     @Override
@@ -40,12 +43,16 @@ public class MainActivity extends AppCompatActivity {
         hrAdapter.setDropDownViewResource(R.layout.heart_rate_row);
         lvHeartRates.setAdapter(hrAdapter);
 
+        //The listener waits for the user's action to click on a pulse
         lvHeartRates.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
                 HeartRate hr = (HeartRate) parent.getItemAtPosition(position);
                 tvSelect.setText("You selected: " + hr.toString());
+                Intent detailActIntent = new Intent(parent.getContext(), HeartDetailActivity.class);
+                detailActIntent.putExtra(HEARTRATE_KEY, hr);
+                startActivity(detailActIntent);
             }
         });
 

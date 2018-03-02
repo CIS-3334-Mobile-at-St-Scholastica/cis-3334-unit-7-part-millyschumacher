@@ -4,14 +4,18 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Pulse: "
-        android:layout_width="wrap_content"
+        android:id="@+id/TextView"
+        android:layout_width="159dp"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:layout_weight="2"
+        android:text="Pulse: "
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <TextView
-        android:text="99.9"
+        android:id="@+id/textViewPulse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewPulse" />
+        android:layout_weight="2"
+        android:text="99.9"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
 </LinearLayout>
